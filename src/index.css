@@ -1,0 +1,298 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: '42dot Sans:Bold';
+  src: url('https://static.figma.com/font/42dotSans_wght__1') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: '42dot Sans:Medium';
+  src: url('https://static.figma.com/font/42dotSans_wght__1') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: '42dot Sans:Regular';
+  src: url('https://static.figma.com/font/42dotSans_wght__1') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Noto Sans Math:Regular';
+  src: url('https://static.figma.com/font/NotoSansMath-Regular_1') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Noto Sans Symbols2:Regular';
+  src: url('https://static.figma.com/font/NotoSansSymbols2-Regular_5') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Noto Sans Symbols:Regular';
+  src: url('https://static.figma.com/font/NotoSansSymbols-VF_2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Noto Sans:Regular';
+  src: url('https://static.figma.com/font/NotoSans-VF_3') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+:root {
+  --brown: #6b4a30;
+  --brown-light: #916947;
+  --ink: #1f1d1a;
+  --muted: #666359;
+  --sage: #4f5c42;
+  --cream: #f8f5ed;
+  --white: #fefdf9;
+  --line: #ded9cc;
+  --sand: #ede8db;
+  color: var(--ink);
+  background: var(--cream);
+  font-family: '42dot Sans:Regular', sans-serif;
+  font-synthesis: none;
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body { min-width: 320px; background: var(--cream); }
+  button, a { -webkit-tap-highlight-color: transparent; }
+  button { cursor: pointer; }
+  a { color: inherit; text-decoration: none; }
+}
+
+main { width: min(100%, 1440px); margin: 0 auto; overflow: hidden; background: var(--white); }
+h1, h2, h3, strong, b { font-family: '42dot Sans:Bold', sans-serif; }
+.button { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; gap: 12px; padding: 0 26px; border: 0; border-radius: 999px; font-family: '42dot Sans:Medium', sans-serif; font-size: 15px; transition: transform .2s, filter .2s; }
+.button:hover { filter: brightness(.95); transform: translateY(-1px); }
+.button--brown { color: var(--white); background: var(--brown); }
+.button--light { color: var(--brown); background: var(--white); }
+
+/* 상단 메뉴는 큰 화면에서는 한 줄, 작은 화면에서는 햄버거 메뉴로 전환됩니다. */
+.site-header { position: sticky; z-index: 50; top: 0; width: 100%; height: 82px; border-bottom: 1px solid var(--line); background: rgba(254,253,249,.97); backdrop-filter: blur(12px); }
+.header-inner { display: flex; width: min(100%, 1440px); height: 100%; margin: auto; padding: 0 clamp(24px, 5.2vw, 75px); align-items: center; }
+.brand { display: flex; flex-shrink: 0; align-items: center; gap: 7px; }
+.brand img { width: 45.24px; height: 42.12px; }
+.brand span { display: flex; flex-direction: column; }
+.brand strong { font-size: 25px; line-height: 1.05; }
+.brand small { margin: 5px 0 0 2px; color: var(--muted); font-family: '42dot Sans:Medium', sans-serif; font-size: 8px; letter-spacing: .64px; }
+.main-nav { display: flex; margin-left: auto; align-items: center; gap: clamp(24px, 3.2vw, 47px); font-family: '42dot Sans:Medium', sans-serif; font-size: 14px; }
+.main-nav a { white-space: nowrap; transition: color .2s; }
+.main-nav a:hover { color: var(--brown); }
+.header-actions { display: flex; margin-left: clamp(18px, 2.8vw, 40px); align-items: center; gap: 10px; }
+.header-actions .button { width: 145px; }
+.text-button, .search-button { border: 0; background: transparent; }
+.text-button { min-width: 120px; color: var(--brown); font-family: '42dot Sans:Medium', sans-serif; font-size: 15px; }
+.search-button { width: 32px; color: var(--muted); font-family: '42dot Sans:Regular', sans-serif; font-size: 25px; }
+.menu-button, .mobile-actions { display: none; }
+
+/* 히어로 이미지와 갤러리는 디자인의 색면 일러스트를 재사용 가능한 구조로 표현합니다. */
+.hero { position: relative; display: grid; min-height: 500px; grid-template-columns: 46.5% 53.5%; background: var(--cream); }
+.hero-copy { position: relative; z-index: 2; padding: 86px clamp(35px, 6.6vw, 95px) 45px; }
+.eyebrow { margin: 0 0 27px; color: var(--brown); font-family: '42dot Sans:Medium', sans-serif; font-size: 17px; }
+.hero h1 { margin: 0; font-size: clamp(40px, 3.62vw, 52px); line-height: 1.18; letter-spacing: -.03em; }
+.hero h1 span, .hero-description span { display: block; }
+.hero-description { margin: 36px 0 34px; color: var(--muted); font-size: 19px; line-height: 1.4; }
+.hero-buttons { display: flex; gap: 15px; }
+.slider-status { display: flex; margin-top: 32px; align-items: center; gap: 18px; }
+.slider-status button { position: relative; border: 0; color: var(--muted); background: transparent; font-family: '42dot Sans:Medium', sans-serif; font-size: 12px; }
+.slider-status button.active { margin-right: 64px; }
+.slider-status button.active::after { position: absolute; top: 50%; left: 27px; width: 64px; height: 1px; background: #a49f92; content: ''; }
+.hero-art { min-width: 0; min-height: 500px; }
+.abstract-interior { position: relative; width: 100%; height: 100%; min-height: 300px; overflow: hidden; background: #b29169; }
+.abstract-interior span { position: absolute; display: block; }
+.interior-light { top: 8%; bottom: 8%; left: 8%; width: 36%; background: #d1b28f; }
+.interior-highlight { top: 5%; bottom: 5%; left: 48%; width: 5%; background: #ded1ba; }
+.interior-shadow { top: 12%; right: 10%; bottom: 10%; width: 33%; background: var(--brown); }
+.interior-floor { right: 0; bottom: 0; left: 0; height: 22%; background: var(--brown-light); }
+.interior-desk { top: 58%; left: 18%; width: 62%; height: 13%; background: var(--sage); }
+.interior-base { top: 70%; left: 23%; width: 52%; height: 8%; background: var(--brown); }
+.hero--sage .abstract-interior { background: #9ba48f; }
+.hero--sage .interior-light { background: #d5cdb7; }
+.hero--rose .abstract-interior { background: #b99b91; }
+.hero--rose .interior-light { background: #dec9c2; }
+.slider-arrows { position: absolute; z-index: 3; bottom: 32px; left: calc(46.5% - 110px); display: flex; gap: 8px; }
+.slider-arrows button { display: grid; width: 42px; height: 42px; border: 0; border-radius: 50%; color: var(--sage); background: var(--sand); place-items: center; font-family: '42dot Sans:Regular', sans-serif; font-size: 30px; }
+
+.signature-services { display: grid; min-height: 170px; padding: 28px clamp(24px, 5vw, 65px); grid-template-columns: repeat(5, 1fr); background: var(--white); }
+.signature-services article { position: relative; text-align: center; }
+.signature-services article:not(:last-child)::after { position: absolute; top: 0; right: 0; width: 1px; height: 112px; background: var(--line); content: ''; }
+.service-icon { display: block; height: 41px; color: var(--sage); font-family: 'Noto Sans Symbols2:Regular', 'Noto Sans Symbols:Regular', sans-serif; font-size: 36px; line-height: 1; }
+.signature-services h2 { margin: 3px 0 12px; font-size: 18px; }
+.signature-services p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.35; }
+
+.philosophy { position: relative; display: grid; min-height: 410px; grid-template-columns: 36.5% 1fr; background: var(--sand); }
+.philosophy-art { min-height: 410px; }
+.philosophy-art .abstract-interior { background: #ba9e7d; }
+.philosophy-copy { padding: 57px 210px 34px 80px; }
+.section-kicker { margin: 0 0 16px; color: var(--sage) !important; font-family: '42dot Sans:Medium', sans-serif !important; font-size: 16px !important; }
+.philosophy-copy h2 { margin: 0 0 19px; font-size: 43px; line-height: 1.12; letter-spacing: -.03em; }
+.philosophy-copy > p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.4; }
+.care-values { display: grid; width: min(100%, 570px); height: 75px; margin-top: 30px; border-radius: 6px; grid-template-columns: repeat(3, 1fr); background: var(--white); }
+.care-values span { display: flex; position: relative; align-items: center; justify-content: center; flex-direction: column; font-family: '42dot Sans:Medium', sans-serif; font-size: 13px; }
+.care-values span:not(:last-child)::after { position: absolute; top: 14px; right: 0; width: 1px; height: 48px; background: var(--line); content: ''; }
+.care-values b { height: 33px; color: var(--sage); font-family: 'Noto Sans Symbols2:Regular', sans-serif; font-size: 24px; }
+.video-button { position: absolute; right: 3.5%; bottom: 14px; width: 180px; border: 0; background: transparent; }
+.video-button i { display: grid; width: 180px; height: 175px; padding-top: 42px; border-radius: 50%; background: radial-gradient(circle 23px at 50% 53px, var(--white) 0 100%, transparent 100%), var(--cream); place-items: start center; font-style: normal; }
+.video-button i { color: var(--ink); }
+.video-button span { display: block; margin-top: 6px; font-family: '42dot Sans:Medium', sans-serif; font-size: 14px; line-height: 1.3; }
+
+.clinics { padding: 35px clamp(30px, 4.5vw, 65px) 28px; background: var(--white); }
+.section-heading { display: grid; margin-bottom: 17px; align-items: start; grid-template-columns: 325px 1fr auto; }
+.section-heading h2 { margin: 0; font-size: 30px; }
+.section-heading p { margin: 3px 0 0; color: var(--muted); font-size: 14px; line-height: 1.35; }
+.section-heading a { margin-top: 17px; color: var(--muted); font-family: '42dot Sans:Medium', sans-serif; font-size: 14px; }
+.clinic-grid { display: grid; gap: 15px; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.clinic-card { min-width: 0; text-align: center; transition: transform .2s; }
+.clinic-card:hover { transform: translateY(-4px); }
+.clinic-image { position: relative; height: 150px; overflow: hidden; border-radius: 5px 5px 0 0; }
+.clinic-image span { position: absolute; top: 16px; left: 7%; width: 35%; height: 75%; background: var(--sand); }
+.clinic-image i { position: absolute; top: 33px; left: 45%; width: 38%; height: 67%; background: #ded1ba; }
+.clinic-card h3 { margin: 14px 4px 10px; font-size: 15px; }
+.clinic-card p { margin: 0; color: var(--muted); font-size: 12px; }
+
+.healing-space { display: grid; min-height: 300px; padding: 0 clamp(30px, 4.5vw, 65px); grid-template-columns: 40% 60%; color: var(--white); background: #2e261f; }
+.space-copy { padding-top: 49px; }
+.space-copy h2 { margin: 0; font-size: 32px; line-height: 1.18; }
+.space-copy p { margin: 24px 0 25px; font-size: 15px; line-height: 1.4; }
+.room-gallery { display: grid; align-items: center; gap: 20px; grid-template-columns: repeat(4, 1fr); }
+.room-gallery button { border: 0; color: var(--white); background: transparent; opacity: .72; transition: opacity .2s, transform .2s; }
+.room-gallery button.active, .room-gallery button:hover { opacity: 1; transform: translateY(-4px); }
+.room-gallery .abstract-interior { min-height: 125px; border: 3px solid transparent; border-radius: 5px; }
+.room-gallery button.active .abstract-interior { border-color: var(--white); }
+.room-gallery span { display: block; margin-top: 13px; font-family: '42dot Sans:Medium', sans-serif; font-size: 13px; }
+.abstract-interior--compact .interior-light { background: #d4bd9e; }
+
+.information { display: grid; min-height: 333px; grid-template-columns: 29.2% 29.1% 22.9% 18.8%; background: var(--white); }
+.notice-panel, .story-panel { padding: 35px 45px 30px 65px; }
+.notice-panel { border-right: 1px solid var(--line); }
+.story-panel { padding-left: 45px; border-right: 1px solid var(--line); }
+.information h2 { margin: 0; font-size: 20px; }
+.info-title { display: flex; justify-content: space-between; }
+.info-title a { margin-top: 5px; color: var(--muted); font-size: 12px; }
+.notice-panel ul { margin: 22px 0 0; padding: 0; list-style: none; }
+.notice-panel li { display: flex; padding: 17px 0; border-bottom: 1px solid var(--line); justify-content: space-between; gap: 12px; font-size: 13px; }
+.notice-panel time { flex-shrink: 0; color: var(--muted); font-size: 12px; }
+.story-panel blockquote { margin: 32px 0 22px; padding: 20px 18px; border-radius: 8px; background: var(--cream); font-family: '42dot Sans:Medium', sans-serif; font-size: 14px; line-height: 1.4; }
+.story-panel > p { margin: 0 0 0 15px; color: var(--muted); font-size: 13px; }
+.location-panel, .contact-panel { padding: 35px 30px 25px; color: var(--white); }
+.location-panel { background: var(--sage); }
+.contact-panel { background: var(--brown); }
+.location-panel h2, .contact-panel h2 { font-size: 19px; }
+.map-placeholder { display: grid; height: 105px; margin-top: 27px; border-radius: 5px; background: var(--sand); place-items: center; }
+.map-placeholder span { color: var(--sage); font-size: 24px; }
+.location-panel address { margin-top: 17px; font-style: normal; font-size: 13px; line-height: 1.3; }
+.panel-link { display: inline-flex; margin-top: 22px; font-family: '42dot Sans:Medium', sans-serif; font-size: 15px; }
+.phone { display: block; margin-top: 31px; font-family: '42dot Sans:Bold', sans-serif; font-size: 24px; }
+.contact-panel > p { margin: 27px 0 0; font-size: 13px; line-height: 1.35; }
+.contact-panel > div { display: flex; margin-top: 45px; gap: 8px; }
+.contact-panel button { min-height: 46px; padding: 0 13px; border: 0; border-radius: 999px; color: var(--brown); background: var(--white); font-family: '42dot Sans:Medium', sans-serif; font-size: 13px; }
+.contact-panel button:last-child { color: var(--white); background: transparent; }
+
+/* 모든 팝업은 같은 구조를 사용해 학생들이 동작 흐름을 쉽게 따라갈 수 있습니다. */
+.modal-backdrop { position: fixed; z-index: 100; inset: 0; display: grid; padding: 20px; background: rgba(31,29,26,.68); place-items: center; }
+.modal { position: relative; width: min(100%, 520px); max-height: calc(100dvh - 40px); overflow: auto; padding: 40px; border-radius: 12px; background: var(--white); box-shadow: 0 24px 80px rgba(0,0,0,.25); }
+.modal h2 { margin: 0 0 28px; font-size: 28px; }
+.modal-close { position: absolute; top: 16px; right: 18px; width: 36px; height: 36px; border: 0; color: var(--muted); background: transparent; font-size: 30px; }
+.modal form { display: grid; gap: 18px; }
+.modal label { display: grid; gap: 8px; color: var(--muted); font-family: '42dot Sans:Medium', sans-serif; font-size: 14px; }
+.modal input, .modal select, .modal textarea { width: 100%; min-height: 48px; padding: 0 14px; border: 1px solid var(--line); border-radius: 5px; outline: 0; background: var(--cream); }
+.modal textarea { min-height: 110px; padding-top: 13px; resize: vertical; }
+.modal input:focus, .modal select:focus, .modal textarea:focus { border-color: var(--sage); }
+.modal form .button { margin-top: 5px; }
+.success-message { padding: 30px 0 10px; text-align: center; }
+.success-message b { font-size: 22px; }
+.success-message p { margin: 10px 0 28px; color: var(--muted); }
+.video-placeholder { position: relative; height: 300px; overflow: hidden; }
+.video-placeholder .abstract-interior { min-height: 300px; }
+.video-placeholder > button { position: absolute; top: 50%; left: 50%; display: grid; width: 58px; height: 58px; border: 0; border-radius: 50%; background: var(--white); transform: translate(-50%,-50%); place-items: center; }
+.video-placeholder > p { position: absolute; right: 0; bottom: 0; left: 0; margin: 0; padding: 15px; color: var(--white); background: rgba(31,29,26,.75); text-align: center; }
+.search-form { grid-template-columns: 1fr auto; align-items: end; }
+
+@media (max-width: 1180px) {
+  .main-nav { gap: 20px; }
+  .header-actions .text-button { display: none; }
+  .philosophy-copy { padding-right: 190px; padding-left: 50px; }
+  .clinic-grid { overflow-x: auto; grid-template-columns: repeat(6, 205px); padding-bottom: 12px; }
+  .information { grid-template-columns: 1fr 1fr; }
+  .location-panel, .contact-panel { min-height: 320px; }
+}
+
+@media (max-width: 920px) {
+  .site-header { height: 72px; }
+  .header-inner { padding-inline: clamp(20px, 4vw, 36px); }
+  .brand strong { font-size: 21px; }
+  .brand img { width: 38px; height: auto; }
+  .header-actions, .main-nav { display: none; }
+  .menu-button { display: grid; width: 44px; height: 44px; margin-left: auto; padding: 11px 8px; border: 0; background: transparent; align-content: center; gap: 6px; }
+  .menu-button span { display: block; height: 2px; background: var(--ink); transition: transform .2s, opacity .2s; }
+  .menu-button.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .menu-button.is-open span:nth-child(2) { opacity: 0; }
+  .menu-button.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  .main-nav.is-open { position: absolute; top: 71px; right: 0; left: 0; display: flex; padding: 24px clamp(20px, 4vw, 36px) 30px; align-items: stretch; flex-direction: column; gap: 0; background: var(--white); box-shadow: 0 18px 35px rgba(31,29,26,.12); }
+  .main-nav.is-open > a { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+  .mobile-actions { display: flex; margin-top: 22px; gap: 10px; }
+  .hero { min-height: 780px; grid-template-columns: 1fr; grid-template-rows: auto 330px; }
+  .hero-copy { padding: 70px clamp(28px, 8vw, 70px) 45px; }
+  .hero-art { min-height: 330px; }
+  .slider-arrows { right: 30px; bottom: 350px; left: auto; }
+  .signature-services { grid-template-columns: repeat(3, 1fr); row-gap: 32px; }
+  .signature-services article:nth-child(3)::after { display: none; }
+  .philosophy { padding-bottom: 160px; grid-template-columns: 42% 58%; }
+  .philosophy-copy { padding: 50px 35px; }
+  .philosophy-copy h2 { font-size: 36px; }
+  .care-values { height: auto; grid-template-columns: 1fr; }
+  .care-values span { padding: 12px; }
+  .care-values span:not(:last-child)::after { top: auto; right: 15%; bottom: 0; left: 15%; width: auto; height: 1px; }
+  .video-button { right: 50%; bottom: 20px; width: 150px; transform: translateX(50%); }
+  .video-button i { width: 150px; height: 120px; }
+  .healing-space { padding-bottom: 35px; grid-template-columns: 1fr; }
+  .space-copy { padding-bottom: 35px; }
+}
+
+@media (max-width: 640px) {
+  .brand small { display: none; }
+  .hero { min-height: 700px; grid-template-rows: auto 280px; }
+  .hero-copy { padding: 55px 24px 38px; }
+  .eyebrow { margin-bottom: 20px; font-size: 15px; }
+  .hero h1 { font-size: 36px; }
+  .hero-description { margin: 25px 0; font-size: 16px; }
+  .hero-buttons { align-items: stretch; flex-direction: column; }
+  .hero-buttons .button { width: 100%; }
+  .slider-status { margin-top: 24px; }
+  .slider-arrows { bottom: 295px; }
+  .signature-services { padding-block: 36px; grid-template-columns: 1fr; }
+  .signature-services article { padding-bottom: 26px; }
+  .signature-services article:not(:last-child)::after { top: auto; right: 15%; bottom: 8px; left: 15%; width: auto; height: 1px; }
+  .signature-services article:nth-child(3)::after { display: block; }
+  .philosophy { padding-bottom: 150px; grid-template-columns: 1fr; }
+  .philosophy-art { min-height: 280px; }
+  .philosophy-copy { padding: 42px 24px; }
+  .philosophy-copy h2 { font-size: 34px; }
+  .philosophy-copy > p br { display: none; }
+  .section-heading { grid-template-columns: 1fr auto; row-gap: 12px; }
+  .section-heading h2 { font-size: 27px; }
+  .section-heading p { grid-column: 1 / 3; grid-row: 2; }
+  .section-heading a { grid-column: 2; grid-row: 1; font-size: 12px; }
+  .clinics { padding-inline: 24px; }
+  .healing-space { padding-inline: 24px; }
+  .room-gallery { overflow-x: auto; grid-template-columns: repeat(4, 145px); padding-bottom: 12px; }
+  .information { grid-template-columns: 1fr; }
+  .notice-panel, .story-panel { min-height: 300px; padding: 35px 24px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .location-panel, .contact-panel { padding: 35px 24px; }
+  .contact-panel > div { margin-top: 35px; }
+  .modal { padding: 34px 22px 26px; }
+  .search-form { grid-template-columns: 1fr; }
+}
